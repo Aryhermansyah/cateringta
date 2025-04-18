@@ -8,8 +8,10 @@
     "start-web": "expo start --web --tunnel",
     "start-web-dev": "DEBUG=expo* expo start --web --tunnel",
     "build-web": "npx expo export --platform web",
-    "predeploy": "npm run build-web",
-    "deploy": "gh-pages -d dist"
+    "build-web-webpack": "webpack-cli --config webpack.config.js",
+    "predeploy": "npm run build-web && node fix-scripts.js",
+    "deploy": "gh-pages -d web-build",
+    "export:embed": "npx expo-router export-static --outDir web-build"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
@@ -46,10 +48,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@babel/plugin-transform-export-namespace-from": "^7.25.9",
     "@expo/ngrok": "^4.1.0",
+    "@expo/webpack-config": "^19.0.1",
     "@types/react": "~18.3.12",
     "gh-pages": "^6.3.0",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.2",
+    "webpack": "^5.99.6",
+    "webpack-cli": "^6.0.1"
   },
   "private": true
 }
