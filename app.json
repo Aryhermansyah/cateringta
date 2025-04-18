@@ -22,7 +22,16 @@
         "backgroundColor": "#ffffff"
       }
     },
-
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/images/favicon.png",
+      "output": "static",
+      "build": {
+        "babel": {
+          "include": ["expo-router"]
+        }
+      }
+    },
     "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true
